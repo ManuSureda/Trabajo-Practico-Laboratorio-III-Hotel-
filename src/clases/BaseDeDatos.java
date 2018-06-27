@@ -21,9 +21,6 @@ public final class BaseDeDatos {
 	private BaseDeDatos() {
 	}
 	
-	public static void agregarHabitacion(int numeroHabitacion,Habitacion hab) {
-		baseDatosHabitacion.put(numeroHabitacion, hab);
-	}
 	
 	public static boolean buscarUsuario(String pass, String user) {
 		boolean flag = false;
@@ -39,19 +36,28 @@ public final class BaseDeDatos {
 		return flag;
 	}
 	
-	public static void agregarUsuario(String pass, Usuario user) {
+	public static void agregarHabitacion(int numeroHabitacion,Habitacion hab) 
+	{
+		baseDatosHabitacion.put(numeroHabitacion, hab);
+	}
+	
+	public static void agregarUsuario(String pass, Usuario user)
+	{
 		baseDatosUsuario.put(pass, user);
 	}
 	
-	public static void agregarCliente(int dni, Cliente psj) {
+	public static void agregarCliente(int dni, Cliente psj) 
+	{
 		baseDatosCliente.put(dni, psj);
 	}
 	
-	public static void agregarReserva(int dni, Reserva res) {
+	public static void agregarReserva(int dni, Reserva res) 
+	{
 		baseDatosReserva.put(dni, res);
 	}
 	
-	public static void listarHabitaciones() {
+	public static void listarHabitaciones()
+	{
 		Iterator it = baseDatosHabitacion.entrySet().iterator();
 		Habitacion habitacion;
 		while(it.hasNext()) {
@@ -61,7 +67,8 @@ public final class BaseDeDatos {
 		}
 	}
 	
-	public static void listarUsuarios() {
+	public static void listarUsuarios() 
+	{
 		Iterator it = baseDatosUsuario.entrySet().iterator();
 		Usuario user;
 		while(it.hasNext()) {
@@ -71,7 +78,8 @@ public final class BaseDeDatos {
 		}
 	}
 	
-	public static void listarPasajeros() {
+	public static void listarPasajeros() 
+	{
 		Iterator it = baseDatosCliente.entrySet().iterator();
 		Cliente psj;
 		while(it.hasNext()) {
@@ -81,7 +89,7 @@ public final class BaseDeDatos {
 		}
 	}
 	
-	public void escribirArchivoUsuario()
+	public static void escribirArchivoUsuario()
 	{
 		try {
 			
@@ -98,7 +106,7 @@ public final class BaseDeDatos {
 		}
 	}
 	
-	public void leerArchivoUsuario()
+	public static void leerArchivoUsuario()
 	{
 		ArrayList usuarioAuxiliar=new ArrayList();
 		
@@ -119,7 +127,7 @@ public final class BaseDeDatos {
 		
 	}
 	
-	public void escribirArchivoHabitaciones()
+	public static void escribirArchivoHabitaciones()
 	{
 		try {
 			
@@ -136,7 +144,7 @@ public final class BaseDeDatos {
 		}
 	}
 	
-	public void leerArchivoHabitaciones()
+	public static void leerArchivoHabitaciones()
 	{
 		ArrayList usuarioAuxiliar=new ArrayList();
 		
@@ -157,7 +165,7 @@ public final class BaseDeDatos {
 		
 	}
 	
-	public void escribirArchivoReservas()
+	public static void escribirArchivoReservas()
 	{
 		try {
 			
@@ -174,7 +182,7 @@ public final class BaseDeDatos {
 		}
 	}
 	
-	public void leerArchivoReservas()
+	public static void leerArchivoReservas()
 	{
 		ArrayList usuarioAuxiliar=new ArrayList();
 		
@@ -195,7 +203,7 @@ public final class BaseDeDatos {
 		
 	}
 
-	public void escribirArchivoCliente()
+	public static void escribirArchivoCliente()
 	{
 		try {
 			
@@ -212,7 +220,7 @@ public final class BaseDeDatos {
 		}
 	}
 	
-	public void leerArchivoCliente()
+	public static void leerArchivoCliente()
 	{
 		ArrayList usuarioAuxiliar=new ArrayList();
 		
@@ -233,7 +241,7 @@ public final class BaseDeDatos {
 		
 	}
 	
-	public HashMap<Integer, Reserva> getReservas()
+	public static HashMap<Integer, Reserva> getReservas()
 	{
 		return baseDatosReserva;
 	}
