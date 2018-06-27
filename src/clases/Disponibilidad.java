@@ -4,42 +4,51 @@ import java.io.Serializable;
 
 public class Disponibilidad implements Serializable{
 	
-	private boolean disponible;
-	private String detalle;
+	private boolean estado;
+	private String razon;
 	
 	public Disponibilidad() {
-		disponible = true;
-		detalle = null;
+		estado = true;
+	    razon = null;
 	}
 
 	public void ocupar(String detalleParam) {
-		disponible = false;
-		detalle = detalleParam;		
+		estado = false;
+		razon = detalleParam;		
 	}
 	
 	public void desocupar() {
-		disponible = true;
-		detalle = null;
+		estado = true;
+		razon = null;
 	}
 	
-	public void setDetalle(String detalleParam){
-		detalle = detalleParam;
+	public void setRazon(String detalleParam){
+		razon = detalleParam;
 	}
 	
-	public String getDetalle() {
-		return detalle;
+	public String getRazon() {
+		return razon;
 	}
 	
-	public String getDisponibleString() {
-		if(disponible) {
-			return "Disponible";
+	
+	public boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado() 
+	{
+		if(estado==false)
+		{
+			estado=true;
 		}
-		else {
-			return "Ocupada";
+		else
+		{
+			estado=false;
 		}
+		
 	}
+
 	
-	public boolean getDisponible() {
-		return disponible;
-	}
+	
+	
 }

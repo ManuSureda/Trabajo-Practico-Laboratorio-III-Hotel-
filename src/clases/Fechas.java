@@ -12,14 +12,10 @@ public class Fechas implements Serializable{
 		fechaIn = fechaInParam;
 		fechaOut = fechaOutParam;
 	}
-	public Fechas()
-	{
-		
-	}
 	
 	
 	
-	public String getFechaIn() {
+	public String getFechaInString() {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("");
 		stringBuilder.append(fechaIn.getDate());
@@ -28,13 +24,7 @@ public class Fechas implements Serializable{
 		return stringBuilder.toString();
 	}
 
-
-	public void setFechaIn(Date fechaIn) {
-		this.fechaIn = fechaIn;
-	}
-
-
-	public String getFechaOut() {
+	public String getFechaOutString() {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("");
 		stringBuilder.append(fechaOut.getDate());
@@ -43,7 +33,9 @@ public class Fechas implements Serializable{
 		return stringBuilder.toString();
 	}
 
-
+	public void setFechaIn(Date fechaIn) {
+		this.fechaIn = fechaIn;
+	}
 	public void setFechaOut(Date fechaOut) {
 		this.fechaOut = fechaOut;
 	}
