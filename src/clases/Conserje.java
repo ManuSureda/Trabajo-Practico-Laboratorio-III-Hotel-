@@ -33,6 +33,25 @@ public class Conserje extends Usuario{
 				}
 	}
 
+	public boolean calcularFechasIgualesParaCheckOut(Date fechaReservaInicio)
+	{
+			double x;
+			
+		        Calendar fecha = Calendar.getInstance();
+		        Date fechaAuxiliar=fecha.getTime();
+				long startTime = fechaReservaInicio.getTime();
+				long endTime =   fechaAuxiliar.getTime();
+				long diffTime = endTime - startTime;
+				x=TimeUnit.DAYS.convert(diffTime, TimeUnit.MILLISECONDS);
+				if(fechaAuxiliar.compareTo(fechaReservaInicio) >= 0)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+	}
 	
 	public void hacerCheckIn(int idReserva)
 	{
@@ -42,8 +61,28 @@ public class Conserje extends Usuario{
 		{
 			for (int i = 0; i < numeroHabitacionesAuxiliares.size(); i++) {
 				int a = numeroHabitacionesAuxiliares.get(i);
-				
+				BaseDeDatos.getBaseHabitaciones().get(a).cambiarEstado();
 			}
+		}
+		else
+		{
+			System.out.println("Aun no esta en fecha para hacer el CheckIn");
+		}
+	}
+	public void hacerCheckOut(int idReserva)
+	{
+		Reserva aux=BaseDeDatos.getReservas().get(idReserva);
+		ArrayList<Integer> numeroHabitacionesAuxiliares = aux.getHabitacionesRequeridas();
+		if(calcularFechasIgualesParaCheckOut(aux.getFechasOcupadas().getFechaInDate())==true)
+		{
+			for (int i = 0; i < numeroHabitacionesAuxiliares.size(); i++) {
+				int a = numeroHabitacionesAuxiliares.get(i);
+				BaseDeDatos.getBaseHabitaciones().get(a).cambiarEstado();
+			}
+		}
+		else
+		{
+			System.out.println("Aun no esta en fecha para hacer el CheckOut");
 		}
 	}
 }
