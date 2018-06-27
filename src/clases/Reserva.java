@@ -1,6 +1,8 @@
 package clases;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Reserva {
 	
@@ -9,19 +11,14 @@ public class Reserva {
 	private boolean reservaUsada;
 	private Fechas fechasOcupadas;
 	private ArrayList<Integer> habitacionesRequeridas;
-	private static int contadorId;
 
 	public Reserva(double costoParam, ArrayList<Integer> habitacionesParam, Fechas fechasParam) {
 		costo = costoParam;
-		contadorId++;
-		id = contadorId;
+		
+		id = devolverUltimoId();
 		reservaUsada = false;
 		habitacionesRequeridas = habitacionesParam;
 		fechasOcupadas = fechasParam;
-	}
-	
-	public Reserva() {
-		contadorId = 1;
 	}
 	
 	public double getCosto() {
@@ -55,7 +52,22 @@ public class Reserva {
 		}
 	}
 	
-
+	
+	public int devolverUltimoId()
+	{
+		Iterator it = BaseDeDatos.getReservas().entrySet().iterator();
+		Reserva reserva;
+		int id=0;
+		while(it.hasNext()) {
+			Map.Entry entry = (Map.Entry)it.next();
+			reserva =(Reserva)entry.getValue();
+			if(reserva.getId()>id)
+			{
+				id=reserva.getId();
+			}
+		}
+		return id+1;
+	}
 
 	
 }

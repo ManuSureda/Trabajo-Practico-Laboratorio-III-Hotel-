@@ -17,7 +17,6 @@ public final class BaseDeDatos {
 	private static HashMap<Integer,Cliente> baseDatosCliente = new HashMap<Integer,Cliente>();
 	private static HashMap<Integer,Reserva> baseDatosReserva = new HashMap<Integer,Reserva>();
 	private static HashMap<Integer,Habitacion> baseDatosHabitacion = new HashMap<Integer,Habitacion>();
-	
 	private BaseDeDatos() {
 	}
 	
@@ -277,6 +276,21 @@ public final class BaseDeDatos {
 			}
 		}
 	}
+	public static HashMap devolverHabitacionesDisponibles(Fechas fecha)
+	{
+		HashMap<Integer,Habitacion>habitacionesAPasar = new HashMap();
+		Iterator it = baseDatosHabitacion.entrySet().iterator();
+		Habitacion habitacion;
+		while(it.hasNext()) {
+			Map.Entry entry = (Map.Entry)it.next();
+			habitacion =(Habitacion)entry.getValue();
+			if(habitacion.verificarDisponibilidadFecha(fecha.getFechaInDate(), fecha.getFechaOutDate()))
+			{
+				habitacionesAPasar.put(habitacion.getNumeroHabitacion(),habitacion);
+			}
+		}
+		return habitacionesAPasar;
+	}
 	
 	public static void listarHabitacionesNoDisponibles(Fechas fecha)
 	{
@@ -291,4 +305,6 @@ public final class BaseDeDatos {
 			}
 		}
 	}
+	
+	
 }

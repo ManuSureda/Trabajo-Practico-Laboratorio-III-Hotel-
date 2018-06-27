@@ -21,8 +21,18 @@ public class Habitacion {
 		precio=precioParam;
 		numeroDeHabitacion=numeroDeHab;
 	}
-	
-	
+	public double getPrecio()
+	{
+		return precio;
+	}
+	public int getNumeroHabitacion()
+	{
+		return numeroDeHabitacion;
+	}
+	public int getCapacidad()
+	{
+		return capacidad;
+	}
 	public void verEstado()
 	{
 		if(estado.getEstado()==true)
@@ -134,8 +144,8 @@ public class Habitacion {
 	}
 
 
-	public void setFechaOcupacion(ArrayList<Fechas> fechaOcupacion) {
-		this.fechaOcupacion = fechaOcupacion;
+	public void setFechaOcupacion(Fechas fecha) {
+		fechaOcupacion.add(fecha);
 	}
 	
 	

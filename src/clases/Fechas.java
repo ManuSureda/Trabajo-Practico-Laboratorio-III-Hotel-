@@ -15,6 +15,12 @@ public class Fechas implements Serializable{
 	
 	
 	
+	public Fechas() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public String getFechaInString() {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("");
