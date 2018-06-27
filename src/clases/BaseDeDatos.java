@@ -246,6 +246,18 @@ public final class BaseDeDatos {
 		return baseDatosReserva;
 	}
 	
+	public static HashMap<String, Usuario> getBaseUsuarios(){
+		return baseDatosUsuario;
+	}
+	
+	public static HashMap<Integer, Habitacion> getBaseHabitaciones(){
+		return baseDatosHabitacion;
+	}
+	
+	public static HashMap<Integer, Cliente> getBaseClientes(){
+		return baseDatosCliente;
+	}
+	
 	public static void eliminarReserva(int id)
 	{
 		baseDatosReserva.remove(id);
