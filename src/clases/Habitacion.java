@@ -100,5 +100,29 @@ public class Habitacion {
 		return "\nNumero de Habitacion= " + numeroDeHabitacion+"\nCapacidad= " + capacidad + "\nPrecio= " + precio;
 	}
 	
+	public boolean eliminarFecha(Fechas fechaAeliminar)
+	{
+		Fechas aux=fechaAeliminar;
+		int i=0;
+		int flag=0;
+		boolean rta=false;
+		while (i<fechaOcupacion.size() && flag==0)
+		{
+			if (aux==fechaOcupacion.get(i))
+			{
+				fechaOcupacion.remove(i);
+				rta = true;
+				flag=1;
+			}
+			i++;
+		}
+		if (!rta)
+		{
+			
+		}
+		
+		return rta;
+		
+	}
 	
 }
