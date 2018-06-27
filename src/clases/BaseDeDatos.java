@@ -1,21 +1,28 @@
 package clases;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 public final class BaseDeDatos {
+	
 	private static HashMap<String,Usuario> baseDatosUsuario = new HashMap<String,Usuario>();
 	private static HashMap<Integer,Cliente> baseDatosCliente = new HashMap<Integer,Cliente>();
 	private static HashMap<Integer,Reserva> baseDatosReserva = new HashMap<Integer,Reserva>();
-	private static ArrayList<Habitacion> baseDatosHabitacion = new ArrayList<Habitacion>();
+	private static HashMap<Integer,Habitacion> baseDatosHabitacion = new HashMap<Integer,Habitacion>();
 	
 	private BaseDeDatos() {
 	}
 	
-	public static void agregarHabitacion(Habitacion hab) {
-		baseDatosHabitacion.add(hab);
+	public static void agregarHabitacion(int numeroHabitacion,Habitacion hab) {
+		baseDatosHabitacion.put(numeroHabitacion, hab);
 	}
 	
 	public static boolean buscarUsuario(String pass, String user) {
@@ -45,8 +52,12 @@ public final class BaseDeDatos {
 	}
 	
 	public static void listarHabitaciones() {
-		for(Habitacion e: baseDatosHabitacion) {
-			System.out.println(e);
+		Iterator it = baseDatosHabitacion.entrySet().iterator();
+		Habitacion habitacion;
+		while(it.hasNext()) {
+			Map.Entry entry = (Map.Entry)it.next();
+			habitacion =(Habitacion)entry.getValue();
+			System.out.println(habitacion);
 		}
 	}
 	
@@ -68,5 +79,162 @@ public final class BaseDeDatos {
 			psj =(Cliente)entry.getValue();
 			System.out.println(psj);
 		}
+	}
+	
+	public void escribirArchivoUsuario()
+	{
+		try {
+			
+			FileOutputStream fos = new FileOutputStream("usuarios.dat");
+			ObjectOutputStream obj = new ObjectOutputStream(fos);
+			obj.writeObject(baseDatosUsuario);
+			
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	public void leerArchivoUsuario()
+	{
+		ArrayList usuarioAuxiliar=new ArrayList();
+		
+		try {
+			FileInputStream fis = new FileInputStream("usuarios.dat");
+			ObjectInputStream obj = new ObjectInputStream(fis);
+			baseDatosUsuario=(HashMap<String, Usuario>) obj.readObject();
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void escribirArchivoHabitaciones()
+	{
+		try {
+			
+			FileOutputStream fos = new FileOutputStream("habitaciones.dat");
+			ObjectOutputStream obj = new ObjectOutputStream(fos);
+			obj.writeObject(baseDatosHabitacion);
+			
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	public void leerArchivoHabitaciones()
+	{
+		ArrayList usuarioAuxiliar=new ArrayList();
+		
+		try {
+			FileInputStream fis = new FileInputStream("habitaciones.dat");
+			ObjectInputStream obj = new ObjectInputStream(fis);
+			baseDatosHabitacion = (HashMap<Integer, Habitacion>) obj.readObject();
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void escribirArchivoReservas()
+	{
+		try {
+			
+			FileOutputStream fos = new FileOutputStream("reservas.dat");
+			ObjectOutputStream obj = new ObjectOutputStream(fos);
+			obj.writeObject(baseDatosReserva);
+			
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	public void leerArchivoReservas()
+	{
+		ArrayList usuarioAuxiliar=new ArrayList();
+		
+		try {
+			FileInputStream fis = new FileInputStream("reservas.dat");
+			ObjectInputStream obj = new ObjectInputStream(fis);
+			baseDatosReserva=(HashMap<Integer, Reserva>) obj.readObject();
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void escribirArchivoCliente()
+	{
+		try {
+			
+			FileOutputStream fos = new FileOutputStream("clientes.dat");
+			ObjectOutputStream obj = new ObjectOutputStream(fos);
+			obj.writeObject(baseDatosCliente);
+			
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	public void leerArchivoCliente()
+	{
+		ArrayList usuarioAuxiliar=new ArrayList();
+		
+		try {
+			FileInputStream fis = new FileInputStream("clientes.dat");
+			ObjectInputStream obj = new ObjectInputStream(fis);
+			baseDatosCliente = (HashMap<Integer, Cliente>) obj.readObject();
+		} catch (FileNotFoundException e) {
+			
+			e.printStackTrace();
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public HashMap<Integer, Reserva> getReservas()
+	{
+		return baseDatosReserva;
 	}
 }
