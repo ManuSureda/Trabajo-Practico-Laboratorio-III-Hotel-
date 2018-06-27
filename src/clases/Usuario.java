@@ -31,7 +31,7 @@ public class Usuario extends Persona{
 	}
 	
 //	+ reservar
-	public void reservar(double costo, Fechas fechasDeOcupacion, ArrayList<Habitacion> habitaciones)
+	public void reservar(double costo, Fechas fechasDeOcupacion, ArrayList<Integer> habitaciones)
 	{
 		Reserva reserva = new Reserva(costo,habitaciones,fechasDeOcupacion);
 		BaseDeDatos.agregarReserva(reserva.getId(), reserva);
@@ -44,11 +44,13 @@ public class Usuario extends Persona{
 		{
 			Reserva aux=BaseDeDatos.getReservas().get(idReserva);
 			boolean rta=false;
-			for (Habitacion hab : aux.getHabitacionesRequeridas())
+			Habitacion hab;
+			for (Integer i : aux.getHabitacionesRequeridas())
 			{
+				hab=BaseDeDatos.getBaseHabitaciones().get(i);
 				rta=hab.eliminarFecha(aux.getFechasOcupadas());
 				if (!rta)
-				{
+				{//esto no tiene sentido que pase, me parece
 					throw new FechaInvalidaException("Fechas invalidas");
 				}
 			}
@@ -60,9 +62,16 @@ public class Usuario extends Persona{
 		}
 	}
 	
-//	+ getNombreUsuario() : String
 //	+ listarHabitaciones() 
+	public void listarHabitaciones() 
+	{
+		BaseDeDatos.listarHabitaciones();
+	}
 //	+ verHabitacionesDisponibles()
+	public void verHabitacionesDisponibles()
+	{
+		
+	}
 //	+ verHabitacionesNoDisponibles() 
 	
 }

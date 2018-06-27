@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.Scanner;
 
+import excepciones.FechaInvalidaException;
+
 public class Habitacion {
 
 	private ArrayList <Fechas> fechaOcupacion;
@@ -118,7 +120,7 @@ public class Habitacion {
 		}
 		if (!rta)
 		{
-			
+			throw new FechaInvalidaException("Fecha invalida");
 		}
 		
 		return rta;
