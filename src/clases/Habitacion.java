@@ -126,5 +126,18 @@ public class Habitacion {
 		return rta;
 		
 	}
+
+	
+
+	public ArrayList<Fechas> getFechaOcupacion() {
+		return fechaOcupacion;
+	}
+
+
+	public void setFechaOcupacion(ArrayList<Fechas> fechaOcupacion) {
+		this.fechaOcupacion = fechaOcupacion;
+	}
+	
+	
 	
 }

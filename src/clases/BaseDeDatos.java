@@ -262,4 +262,33 @@ public final class BaseDeDatos {
 	{
 		baseDatosReserva.remove(id);
 	}
+	
+	
+	public static void listarHabitacionesDisponibles(Fechas fecha)
+	{
+		Iterator it = baseDatosHabitacion.entrySet().iterator();
+		Habitacion habitacion;
+		while(it.hasNext()) {
+			Map.Entry entry = (Map.Entry)it.next();
+			habitacion =(Habitacion)entry.getValue();
+			if(habitacion.verificarDisponibilidadFecha(fecha.getFechaInDate(), fecha.getFechaOutDate()))
+			{
+				System.out.println(habitacion);
+			}
+		}
+	}
+	
+	public static void listarHabitacionesNoDisponibles(Fechas fecha)
+	{
+		Iterator it = baseDatosHabitacion.entrySet().iterator();
+		Habitacion habitacion;
+		while(it.hasNext()) {
+			Map.Entry entry = (Map.Entry)it.next();
+			habitacion =(Habitacion)entry.getValue();
+			if(!habitacion.verificarDisponibilidadFecha(fecha.getFechaInDate(), fecha.getFechaOutDate()))
+			{
+				System.out.println(habitacion);
+			}
+		}
+	}
 }

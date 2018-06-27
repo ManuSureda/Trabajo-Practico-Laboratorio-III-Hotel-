@@ -62,16 +62,18 @@ public class Usuario extends Persona{
 		}
 	}
 	
-//	+ listarHabitaciones() 
 	public void listarHabitaciones() 
 	{
 		BaseDeDatos.listarHabitaciones();
 	}
-//	+ verHabitacionesDisponibles()
-	public void verHabitacionesDisponibles()
+
+	public void verHabitacionesDisponibles(Fechas fechaElegida)
 	{
-		
+		BaseDeDatos.listarHabitacionesDisponibles(fechaElegida);
 	}
-//	+ verHabitacionesNoDisponibles() 
-	
+
+	public void verHabitacionesNoDisponibles(Fechas fechaElegida)
+	{
+		BaseDeDatos.listarHabitacionesNoDisponibles(fechaElegida);
+	}
 }
