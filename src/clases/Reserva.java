@@ -8,10 +8,10 @@ public class Reserva {
 	private int id;
 	private boolean reservaUsada;
 	private Fechas fechasOcupadas;
-	private ArrayList<Habitacion> habitacionesRequeridas;
+	private ArrayList<Integer> habitacionesRequeridas;
 	private static int contadorId;
 
-	public Reserva(double costoParam, ArrayList<Habitacion> habitacionesParam, Fechas fechasParam) {
+	public Reserva(double costoParam, ArrayList<Integer> habitacionesParam, Fechas fechasParam) {
 		costo = costoParam;
 		contadorId++;
 		id = contadorId;
@@ -33,7 +33,7 @@ public class Reserva {
 	public Fechas getFechasOcupadas() {
 		return fechasOcupadas;
 	}
-	public ArrayList<Habitacion> getHabitacionesRequeridas() {
+	public ArrayList<Integer> getHabitacionesRequeridas() {
 		return habitacionesRequeridas;
 	}
 	
@@ -45,7 +45,7 @@ public class Reserva {
 		System.out.println("ID Reserva: "+id);
 		System.out.println("Fechas ocupadas: "+fechasOcupadas.getFechaInString()+ " al "+fechasOcupadas.getFechaOutString());
 		System.out.println("Habitaciones requeridas: ");
-			for(Habitacion aux:habitacionesRequeridas) {
+			for(int aux:habitacionesRequeridas) {
 				System.out.println(aux);
 			}
 		if(reservaUsada) {
