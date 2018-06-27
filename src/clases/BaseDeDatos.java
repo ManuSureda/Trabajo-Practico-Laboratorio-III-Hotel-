@@ -245,4 +245,9 @@ public final class BaseDeDatos {
 	{
 		return baseDatosReserva;
 	}
+	
+	public static void eliminarReserva(int id)
+	{
+		baseDatosReserva.remove(id);
+	}
 }
