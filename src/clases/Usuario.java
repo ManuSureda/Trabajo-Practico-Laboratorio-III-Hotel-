@@ -1,22 +1,25 @@
 package clases;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import excepciones.FechaInvalidaException;
+import excepciones.IdNotFoundException;
+
 public class Usuario extends Persona{
 
 	private String nombreUsuario;
 	private String password;
-	private int typeUser;
+	
 	
 	public Usuario(String nombreCompletoParam, String dniParam, String telefonoParam, String domicilioParam) {
 		super(nombreCompletoParam, dniParam, telefonoParam, domicilioParam);
-		// TODO Auto-generated constructor stub
 	}
 	
-	public Usuario(String nombreCompleto, String dni, String telefono, String domicilio, String nombreUsuarioParam, String passwordParam, int typeUserParam) {
+	public Usuario(String nombreCompleto, String dni, String telefono, String domicilio, String nombreUsuarioParam, String passwordParam) {
 		super(nombreCompleto, dni, telefono, domicilio);
 		nombreUsuario = nombreUsuarioParam;
 		password = passwordParam;
-		typeUser = typeUserParam;
-		
 	}
 
 	public String getNombreUsuario() {
@@ -27,6 +30,39 @@ public class Usuario extends Persona{
 		return password;
 	}
 	
+//	+ reservar
+	public void reservar(double costo, Fechas fechasDeOcupacion, ArrayList<Habitacion> habitaciones)
+	{
+		Reserva reserva = new Reserva(costo,habitaciones,fechasDeOcupacion);
+		BaseDeDatos.agregarReserva(reserva.getId(), reserva);
+	}
 	
-
+//	+ cancelarReserva
+	public void cancelarReserva(int idReserva)
+	{
+		if (BaseDeDatos.getReservas().containsKey(idReserva))
+		{
+			Reserva aux=BaseDeDatos.getReservas().get(idReserva);
+			boolean rta=false;
+			for (Habitacion hab : aux.getHabitacionesRequeridas())
+			{
+				rta=hab.eliminarFecha(aux.getFechasOcupadas());
+				if (!rta)
+				{
+					throw new FechaInvalidaException("Fechas invalidas");
+				}
+			}
+			BaseDeDatos.eliminarReserva(idReserva);
+		}
+		else
+		{
+			throw new IdNotFoundException("id incorrecta");
+		}
+	}
+	
+//	+ getNombreUsuario() : String
+//	+ listarHabitaciones() 
+//	+ verHabitacionesDisponibles()
+//	+ verHabitacionesNoDisponibles() 
+	
 }
