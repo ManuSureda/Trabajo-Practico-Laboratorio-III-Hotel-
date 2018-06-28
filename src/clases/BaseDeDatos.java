@@ -21,7 +21,12 @@ public final class BaseDeDatos {
 	private BaseDeDatos() {
 	}
 	
-	
+	/**
+	 * Recorre la base de datos de usuarios para encontrar el usuario que coincide con el nombre y contraseña pasados por parametro.
+	 * @param Contraseña
+	 * @param Nombre de Usuario
+	 * @return Retorna el Usuario en cuestion
+	 */
 	public static Usuario buscarUsuario(String pass, String user) {
 		boolean flag = false;
 		Iterator it = baseDatosUsuario.entrySet().iterator();
@@ -35,22 +40,35 @@ public final class BaseDeDatos {
 		}	
 		return usuario;
 	}
-	
+	/**
+	 * Añade una habitacion al mapa de habitaciones
+	 * @param Numero de Habitacion
+	 * @param objeto de Habitacion
+	 */
 	public static void agregarHabitacion(int numeroHabitacion,Habitacion hab) 
 	{
 		baseDatosHabitacion.put(numeroHabitacion, hab);
 	}
-	
+	/**
+	 * Añade un Usuario al mapa de usuarios
+	 * @param objeto de usuario
+	 */
 	public static void agregarUsuario(Usuario user)
 	{
 		baseDatosUsuario.put(user.getNombreUsuario(), user);
 	}
-	
+	/**
+	 * Añade una reserva al mapa de reservas
+	 * @param Id de la reserva
+	 * @param objeto Reserva
+	 */
 	public static void agregarReserva(int dni, Reserva res) 
 	{
 		baseDatosReserva.put(dni, res);
 	}
-	
+	/**
+	 * Recorre el mapa de habitaciones y lo muestra
+	 */
 	public static void listarHabitaciones()
 	{
 		Iterator it = baseDatosHabitacion.entrySet().iterator();
@@ -61,7 +79,9 @@ public final class BaseDeDatos {
 			System.out.println(habitacion);
 		}
 	}
-	
+	/**
+	 * Recorre el mapa de usuarios y los muestra
+	 */
 	public static void listarUsuarios() 
 	{
 		Iterator it = baseDatosUsuario.entrySet().iterator();
@@ -73,7 +93,10 @@ public final class BaseDeDatos {
 		}
 	}
 	
-	
+	/**
+	 * Guarda en un archivo el mapa de usuarios
+	 * @throws IOException
+	 */
 	public static void escribirArchivoUsuario() throws IOException
 	{
 		FileOutputStream fos = null;
@@ -96,7 +119,9 @@ public final class BaseDeDatos {
 			obj.close();
 		}
 	}
-	
+	/**
+	 * Carga el mapa con el mapa que levanta de un archivo
+	 */
 	public static void leerArchivoUsuario()
 	{
 		ArrayList usuarioAuxiliar=new ArrayList();
@@ -128,7 +153,9 @@ public final class BaseDeDatos {
 		}
 		
 	}
-	
+	/**
+	 * Guarda el mapa de habitaciones en un archivo
+	 */
 	public static void escribirArchivoHabitaciones()
 	{
 		FileOutputStream fos = null;
@@ -157,7 +184,10 @@ public final class BaseDeDatos {
 			
 		}
 	}
-	
+	/**
+	 * 
+	 * 
+	 */
 	public static void leerArchivoHabitaciones()
 	{
 		ArrayList usuarioAuxiliar=new ArrayList();

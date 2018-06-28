@@ -11,7 +11,9 @@ public class Cliente extends Usuario {
 		super(nombreCompleto, dni, telefono, domicilio, nombreUsuarioParam, passwordParam);
 		// TODO Auto-generated constructor stub
 	}
-	
+	/**
+	 * Muesta las reservas a partir de los numeros de reserva que almacena un cliente.
+	 */
 	public void consultarReservas()
 	{
 		for(Integer a:numeroReservas)

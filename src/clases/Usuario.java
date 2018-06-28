@@ -34,14 +34,13 @@ public class Usuario extends Persona{
 		return password;
 	}
 	
-//	+ reservar
-	public void reservar(double costo, Fechas fechasDeOcupacion, ArrayList<Integer> habitaciones)
-	{
-		Reserva reserva = new Reserva(costo,habitaciones,fechasDeOcupacion);
-		BaseDeDatos.agregarReserva(reserva.getId(), reserva);
-	}
+
 	
-//	+ cancelarReserva
+    /**
+     * Recibe la id de la reserva a eliminar, la busca en la base de datos de la reserva y busca las fechas que coinciden con la reserva , elimina las fechas 
+     * de las habitaciones a liberar y elimina la reserva
+     * @param ID de la Reserva
+     */
 	public void cancelarReserva(int idReserva)
 	{   
 		if (BaseDeDatos.getReservas().containsKey(idReserva))
@@ -81,7 +80,14 @@ public class Usuario extends Persona{
 	{
 		BaseDeDatos.listarHabitacionesNoDisponibles(fechaElegida);
 	}
-	
+	/**
+	 * Calcula los segundos desde una fecha especifica a las dos fechas que recibe por parametro, luego resta la cantidad de segundos para ver la distancia de un dia a otro
+	 * y los convierte en dias que luego multiplica por el costo para obtener el costo final
+	 * @param Objeto Habitacion
+	 * @param Fecha de inicion
+	 * @param Fecha de fin
+	 * @return Precio total
+	 */
 	public double calcularCostoTotal(ArrayList<Integer> hab,Date ini,Date fin)
 	{   
 		double rta=0;
@@ -107,6 +113,10 @@ public class Usuario extends Persona{
 			return 0;
 		}
 	}
+	/**
+	 * Carga las fechas que contiene la variable
+	 * @param variable Fechas vacias
+	 */
 	public void ingresoFechasEstadia(Fechas f)
 	{
 		Scanner scan=new Scanner(System.in);

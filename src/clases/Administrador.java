@@ -16,6 +16,9 @@ public class Administrador extends Usuario implements IArchivar {
 	}
 
 	@Override
+	/**
+	 * Funcion que crea un BackUp de las Habitaciones en un ARCHIVO
+	 */
 	public void escribirArchivoHabitaciones() throws IOException {
 		FileOutputStream fos = null;
 		ObjectOutputStream obj = null;
@@ -37,6 +40,9 @@ public class Administrador extends Usuario implements IArchivar {
 		}
 	}
 	@Override
+	/**
+	 * Funcion que crea un BackUp de las Reservas en un ARCHIVO
+	 */
 	public void escribirArchivoReservas() throws IOException {
 		
 		FileOutputStream fos = null;
@@ -60,6 +66,9 @@ public class Administrador extends Usuario implements IArchivar {
 	}
 
 	@Override
+	/**
+	 * Funcion que crea un BackUp de los Usuarios en un ARCHIVO
+	 */
 	public void escribirArchivoUsuario() throws IOException {
 		
 		FileOutputStream fos = null;
@@ -82,7 +91,10 @@ public class Administrador extends Usuario implements IArchivar {
 		}
 		
 	}
-	
+	/**
+	 * Recorre la base de datos de Usuarios(mapa) y elimina cuando encuentra el nombre
+	 * @param Nombre de usuario
+	 */
 	public void eliminarUser(String nUser)
     {
         BaseDeDatos.getBaseUsuarios().remove(nUser);
