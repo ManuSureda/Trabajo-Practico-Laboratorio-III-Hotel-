@@ -14,7 +14,7 @@ public class Habitacion {
 	private int capacidad;
 	private double precio;
 	private int numeroDeHabitacion;
-	
+
 	public Habitacion(int capacidadParam,double precioParam,int numeroDeHab)
 	{	
 		fechaOcupacion=new ArrayList();
@@ -45,11 +45,12 @@ public class Habitacion {
 			System.out.println("No disponible por: "+ estado.getRazon());
 		}
 	}
-	
+
 	//ESTA FUNCION RECORRE EL ARRAYLIST DE FECHAS OCUPADAS Y COMPARAR EL DIA, SI EL DIA DE FIN ES ANTES
 	//DEL DIA DE INICIO DE UNA RESERVA EFECTUADA SE FIJA QUE EL DE INICIO ESTE DESPUES DEL DIA DE FIN
 	//DE LA RESERVA YA EFECTUADA Y VICEVERSA.
 	public boolean verificarDisponibilidadFecha(Date ini,Date fin)
+<<<<<<< HEAD
     {  
    	 
    	 Fechas aux;
@@ -97,18 +98,62 @@ public class Habitacion {
     	 return flag;
    	 }
 	
+=======
+	{  
+		int i = 0;
+		Fechas aux;
+		Fechas proxima;
+		boolean flag =true;
+
+		while(i < fechaOcupacion.size() && flag)
+		{
+			aux = fechaOcupacion.get(i);
+			if(fin.before(aux.getFechaInDate()) || ini.after(aux.getFechaOutDate()))
+			{
+				if(ini.after(aux.getFechaOutDate()))
+				{
+					int f = i+1;
+					while(f < fechaOcupacion.size())
+					{
+						proxima = fechaOcupacion.get(f);
+
+						if(fin.after(proxima.getFechaInDate()))
+						{
+							flag=false;
+
+						}
+						if(ini.after(proxima.getFechaOutDate()))
+						{
+							flag=true;
+							break;
+						}
+						f++;
+					}
+				} 
+			}    		
+			else     			
+			{	     			    			 
+				flag=false;
+			}
+
+			i++;
+		}
+		return flag;
+	}
+
+>>>>>>> 7620333990c345905a086cf9091143bb1ae766dc
 	//Cambia el estado de false a true y viceversa
 	public void cambiarEstado()
 	{	
 		estado.setEstado();
 	}
-	
+
 	//pone el estado en false y pide un motivo
 	public void establecerOcupacionDetallada(String motivoEstado)
 	{
 		estado.ocupar(motivoEstado);
 	}
-	
+
 	//pone el estado en true y quita los motivos (si es que hay)
 	public void establecerDesocupacion()
 	{
@@ -120,7 +165,7 @@ public class Habitacion {
 	public String toString() {
 		return "\nNumero de Habitacion= " + numeroDeHabitacion+"\nCapacidad= " + capacidad + "\nPrecio= " + precio;
 	}
-	
+
 	public boolean eliminarFecha(Fechas fechaAeliminar)
 	{
 		Fechas aux=fechaAeliminar;
@@ -141,12 +186,12 @@ public class Habitacion {
 		{
 			throw new FechaInvalidaException("Fecha invalida");
 		}
-		
+
 		return rta;
-		
+
 	}
 
-	
+
 
 	public ArrayList<Fechas> getFechaOcupacion() {
 		return fechaOcupacion;
@@ -156,7 +201,7 @@ public class Habitacion {
 	public void setFechaOcupacion(Fechas fecha) {
 		fechaOcupacion.add(fecha);
 	}
-	
-	
-	
+
+
+
 }
