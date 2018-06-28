@@ -15,12 +15,17 @@ public class Menu {
 	
 	public void MenuLogin() 
 	{
-		System.out.println("Opcion: ");
-		int respuesta = scan.nextInt();
+		
 		boolean flag=true;
 		Usuario aux;
+
+		System.out.println("1. Ingresar al Sistema.");
+		System.out.println("2. Registrarse.");
+		System.out.println("3. Salir.");
 		while(flag)
-		{
+		{	
+			System.out.println("Opcion: ");
+		     int respuesta = scan.nextInt();
 				switch(respuesta)
 				{
 					case 1:
@@ -125,24 +130,40 @@ public class Menu {
 		System.out.println("1. Reservar.");
 		System.out.println("2. Cancelar reserva.");
 		System.out.println("3. Ver todas las reservas.");
-		System.out.println("4. Desloguear.");
+		System.out.println("4. Hacer CheckIn");
+		System.out.println("5. Hacer CheckOut");
+		System.out.println("6. Desloguear.");
 		boolean flag=true;
-		System.out.println("Opcion: ");
-		int respuesta = scan.nextInt();
+		int idReserva;
+		
 		while(flag)
-		switch(respuesta) 
 		{
-			case 1:
-				a.HacerReserva();
-			case 2:
-				System.out.print("\nIngrese el numero de su reserva: ");
-				int res=scan.nextInt();
-				a.cancelarReserva(res);
-			case 3:
-				BaseDeDatos.verTodasLasReservas();
-			case 4:
-				flag=false;
+			System.out.println("Opcion: ");
+			int respuesta = scan.nextInt();
+			switch(respuesta) 
+			{
+				case 1:
+					a.HacerReserva();
+				case 2:
+					System.out.print("\nIngrese el numero de su reserva: ");
+					int res=scan.nextInt();
+					a.cancelarReserva(res);
+				case 3:
+					BaseDeDatos.verTodasLasReservas();
+				case 4:
+					System.out.print("Ingrese el numero de la reserva a hacer CheckIn: ");
+					idReserva=scan.nextInt();
+					a.hacerCheckIn(idReserva);
+				case 5:
+
+					System.out.print("Ingrese el numero de la reserva a hacer CheckOut: ");
+					idReserva=scan.nextInt();
+					a.hacerCheckOut(idReserva);
+				case 6:
+					flag=false;
+			}
 		}
+		
 		
 	}
 	public void MenuAdm(Administrador a) {
