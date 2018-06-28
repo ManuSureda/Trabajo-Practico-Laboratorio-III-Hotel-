@@ -21,8 +21,9 @@ public class Main {
 		BaseDeDatos.agregarHabitacion(1,a);
 		BaseDeDatos.agregarHabitacion(2,b);
 		aux.HacerReserva();
+		
 		BaseDeDatos.verTodasLasReservas();
-
+		aux.HacerReserva();
 	}
 
 }
