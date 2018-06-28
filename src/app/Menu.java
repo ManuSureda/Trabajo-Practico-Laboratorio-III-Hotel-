@@ -26,10 +26,10 @@ public class Menu {
 				MenuCliente();
 			}
 			if(BaseDeDatos.getBaseUsuarios().get(user) instanceof Conserje) {
-				MenuConserje();
+				//MenuConserje();
 			}
 			if(BaseDeDatos.getBaseUsuarios().get(user) instanceof Administrador) {
-				MenuAdministrador();
+				//MenuAdministrador();
 			}
 		}
 		
