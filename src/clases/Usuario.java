@@ -116,6 +116,9 @@ public class Usuario extends Persona{
 		day = scan.nextInt();
 		System.out.print("Mes de ingreso: ");
 		month = scan.nextInt();
+		if(month < 1 || month > 12) {
+			throw new FechaInvalidaException("Mes ingresado incorrecto");
+		}
 		System.out.print("Año de ingreso: ");
 		year = scan.nextInt();
 		Date a = new Date(year,month,day);
@@ -124,6 +127,9 @@ public class Usuario extends Persona{
 		day = scan.nextInt();
 		System.out.print("Mes de salida: ");
 		month = scan.nextInt();
+		if(month < 1 || month > 12) {
+			throw new FechaInvalidaException("Mes ingresado incorrecto");
+		}		
 		System.out.print("Año de salida: ");
 		year = scan.nextInt();
 		Date  b = new Date(year,month,day);

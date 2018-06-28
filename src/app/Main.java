@@ -1,5 +1,6 @@
 package app;
 
+import clases.Administrador;
 import clases.BaseDeDatos;
 
 import clases.Cliente;
