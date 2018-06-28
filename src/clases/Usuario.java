@@ -1,6 +1,7 @@
 package clases;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -42,7 +43,7 @@ public class Usuario extends Persona{
 	
 //	+ cancelarReserva
 	public void cancelarReserva(int idReserva)
-	{
+	{   
 		if (BaseDeDatos.getReservas().containsKey(idReserva))
 		{
 			Reserva aux=BaseDeDatos.getReservas().get(idReserva);
@@ -58,6 +59,7 @@ public class Usuario extends Persona{
 				}
 			}
 			BaseDeDatos.eliminarReserva(idReserva);
+			System.out.println("Reserva Eliminada!");
 		}
 		else
 		{
@@ -221,5 +223,7 @@ public class Usuario extends Persona{
 		}
 
 	}
+	
+	
 
 }
