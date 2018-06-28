@@ -1,8 +1,9 @@
 package clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Cliente extends Usuario {
+public class Cliente extends Usuario implements Serializable {
 
 	ArrayList <Integer>numeroReservas=new ArrayList();
 	
@@ -16,10 +17,19 @@ public class Cliente extends Usuario {
 	 */
 	public void consultarReservas()
 	{
-		for(Integer a:numeroReservas)
+		if(numeroReservas.size()==0)
 		{
-			BaseDeDatos.getReservas().get(a).mostrarReserva();
+			System.out.println("No Hay Reservas!");
 		}
+		else
+		{	System.out.println("Hay Reservas!");
+			for(Integer a:numeroReservas)
+			{
+				BaseDeDatos.getReservas().get(a).mostrarReserva();
+				
+			}
+		}
+		
 	}
 	
 }

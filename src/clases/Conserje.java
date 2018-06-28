@@ -1,11 +1,12 @@
 package clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class Conserje extends Usuario{
+public class Conserje extends Usuario implements Serializable{
 
 	public Conserje(String nombreCompleto, String dni, String telefono, String domicilio, String nombreUsuarioParam,
 			String passwordParam) {

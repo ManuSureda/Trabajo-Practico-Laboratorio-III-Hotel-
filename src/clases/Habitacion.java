@@ -1,5 +1,6 @@
 package clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -7,7 +8,7 @@ import java.util.Scanner;
 
 import excepciones.FechaInvalidaException;
 
-public class Habitacion {
+public class Habitacion implements Serializable{
 
 	private ArrayList <Fechas> fechaOcupacion;
 	private Disponibilidad estado;

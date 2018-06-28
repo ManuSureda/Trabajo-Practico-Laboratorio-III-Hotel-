@@ -1,5 +1,6 @@
 package clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -10,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 import excepciones.FechaInvalidaException;
 import excepciones.IdNotFoundException;
 
-public class Usuario extends Persona{
+public class Usuario extends Persona implements Serializable{
 
 	private String nombreUsuario;
 	private String password;
@@ -233,6 +234,13 @@ public class Usuario extends Persona{
 		}
 
 	}
+
+	@Override
+	public String toString() {
+		return "Usuario [nombreUsuario=" + nombreUsuario + ", password=" + password + "]";
+	}
+	
+	
 	
 	
 

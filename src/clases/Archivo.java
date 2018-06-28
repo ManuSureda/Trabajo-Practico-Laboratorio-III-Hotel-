@@ -7,9 +7,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Archivo<K,V> {
+public class Archivo<K,V> implements Serializable {
 	private ObjectOutputStream salida;
 	private ObjectInputStream entrada;
 	private HashMap<K,V> retornoHashMap;
@@ -26,6 +27,7 @@ public class Archivo<K,V> {
 	 * Metodo para Escribir en un archivo un hashmap
 	 */
 	public void escribirArchivo(HashMap<K,V> hashMapParaGuardar) {
+		
 		try {
 			salida = new ObjectOutputStream(new FileOutputStream(rutaDelArchivo));
 			salida.writeObject(hashMapParaGuardar);

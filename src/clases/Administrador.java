@@ -5,10 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 import interfaces.IArchivar;
 
-public class Administrador extends Usuario implements IArchivar {
+public class Administrador extends Usuario implements IArchivar, Serializable {
 
 	public Administrador(String nombreCompleto, String dni, String telefono, String domicilio,
 			String nombreUsuarioParam, String passwordParam) {

@@ -5,7 +5,7 @@ import clases.BaseDeDatos;
 
 import clases.Cliente;
 import clases.Habitacion;
-
+import clases.Hotel;
 import clases.Habitacion;
 import clases.Usuario;
 
@@ -15,16 +15,21 @@ public class Main {
 	public static void main(String[] args) {
 
 		// TODO Auto-generated method stub
+		/*
+		 * Lectura de archivos para cargar la BaseDeDatos
+		 */
 		
-		Habitacion a=new Habitacion(4,1500,1);
-		Habitacion b=new Habitacion(4,1700,2);
-		Cliente aux=new Cliente("Maxi","1","1","1","max","max");
-		BaseDeDatos.agregarHabitacion(1,a);
-		BaseDeDatos.agregarHabitacion(2,b);
-		aux.HacerReserva();
+		BaseDeDatos.leerUsuarios();
+		BaseDeDatos.leerHabitaciones();
+		BaseDeDatos.leerReserva();
 		
-		BaseDeDatos.verTodasLasReservas();
-		aux.HacerReserva();
+		Hotel costaEsmeralda = new Hotel("Costa Esmeralda","Av. Constitucion 5566","2234889596");
+		
+		costaEsmeralda.MenuLogin();
+		BaseDeDatos.archivarHabitaciones();
+		BaseDeDatos.archivarReserva();
+		BaseDeDatos.archivarUsuarios();
+		
 	}
 
 }

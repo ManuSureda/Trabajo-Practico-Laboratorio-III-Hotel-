@@ -1,10 +1,11 @@
 package clases;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
-public class Reserva {
+public class Reserva implements Serializable{
 	
 	private double costo;
 	private int id;
