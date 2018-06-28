@@ -21,10 +21,10 @@ public final class BaseDeDatos {
 	}
 	
 	
-	public static boolean buscarUsuario(String pass, String user) {
+	public static Usuario buscarUsuario(String pass, String user) {
 		boolean flag = false;
 		Iterator it = baseDatosUsuario.entrySet().iterator();
-		Usuario usuario;
+		Usuario usuario = null;
 		while(it.hasNext()) {
 			Map.Entry entry = (Map.Entry)it.next();
 			usuario =(Usuario)entry.getValue();
@@ -32,7 +32,7 @@ public final class BaseDeDatos {
 				flag = true;
 			}
 		}	
-		return flag;
+		return usuario;
 	}
 	
 	public static void agregarHabitacion(int numeroHabitacion,Habitacion hab) 
