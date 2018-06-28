@@ -17,6 +17,7 @@ public class Habitacion {
 	
 	public Habitacion(int capacidadParam,double precioParam,int numeroDeHab)
 	{	
+		fechaOcupacion=new ArrayList();
 		capacidad=capacidadParam;
 		precio=precioParam;
 		numeroDeHabitacion=numeroDeHab;
@@ -50,41 +51,49 @@ public class Habitacion {
 	//DE LA RESERVA YA EFECTUADA Y VICEVERSA.
 	public boolean verificarDisponibilidadFecha(Date ini,Date fin)
     {  
-   	 Iterator it= fechaOcupacion.iterator();
+   	 
    	 Fechas aux;
    	 Fechas proxima;
    	 boolean flag =true;
-   	 
-   	 		while(it.hasNext() && flag!=false)
-	    	 {
-	    		 aux=(Fechas) it.next();
-	    		 if(fin.before(aux.getFechaInDate()) || ini.after(aux.getFechaOutDate()))
-	    		 {
-	    			 if(ini.after(aux.getFechaOutDate()))
-	     			{
-	     				while(it.hasNext())
-	     				{
-	     					proxima=(Fechas)it.next();
-	     					
-	     					if(fin.after(proxima.getFechaInDate()))
-	     					{
-	     						flag=false;
-	     						
-	     					}
-	     					if(ini.after(proxima.getFechaOutDate()))
-	     					{
-	     						flag=true;
-	     						break;
-	     					}					
-	     				}
-	     			} 
-	    		 }    		
-	    		 else     			
-	    		 {	     			    			 
-	    			 flag=false;
-	     		 }
-   		 
-	     	 }
+   	 if(fechaOcupacion==null)
+   	 {
+   		 return true;
+   	 }
+   	 else
+   	 {
+   		Iterator it= fechaOcupacion.iterator();
+   		while(it.hasNext() && flag!=false)
+   	 {
+   		 aux=(Fechas) it.next();
+   		 if(fin.before(aux.getFechaInDate()) || ini.after(aux.getFechaOutDate()))
+   		 {
+   			 if(ini.after(aux.getFechaOutDate()))
+    			{
+    				while(it.hasNext())
+    				{
+    					proxima=(Fechas)it.next();
+    					
+    					if(fin.after(proxima.getFechaInDate()))
+    					{
+    						flag=false;
+    						
+    					}
+    					if(ini.after(proxima.getFechaOutDate()))
+    					{
+    						flag=true;
+    						break;
+    					}					
+    				}
+    			} 
+   		 }    		
+   		 else     			
+   		 {	     			    			 
+   			 flag=false;
+    		 }
+		 
+    	 }
+   	 }
+   	 		
     	 return flag;
    	 }
 	

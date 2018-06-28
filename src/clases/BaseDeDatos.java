@@ -289,6 +289,7 @@ public final class BaseDeDatos {
 				habitacionesAPasar.put(habitacion.getNumeroHabitacion(),habitacion);
 			}
 		}
+		BaseDeDatos.listarHabitacionesDisponibles(fecha);
 		return habitacionesAPasar;
 	}
 	

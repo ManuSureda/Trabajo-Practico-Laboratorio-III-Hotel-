@@ -133,6 +133,7 @@ public class Usuario extends Persona{
 	
 	public void HacerReserva()
 	{
+		
 		Reserva r;
 		Scanner sc= new Scanner(System.in);
 		System.out.println("Ingrese la cantidad de pasajeros: ");
@@ -142,7 +143,7 @@ public class Usuario extends Persona{
 		System.out.println("Habitaciones disponibles: ");
 		HashMap<Integer,Habitacion> listaDeHabitaciones=new HashMap<>();
 		listaDeHabitaciones=BaseDeDatos.devolverHabitacionesDisponibles(f);
-
+		
 		double costo=0;
 		char confirmacion='n';
 		ArrayList<Integer> listaDeHabitaciones2=new ArrayList<>();
