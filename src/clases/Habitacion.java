@@ -50,7 +50,7 @@ public class Habitacion {
 	//DEL DIA DE INICIO DE UNA RESERVA EFECTUADA SE FIJA QUE EL DE INICIO ESTE DESPUES DEL DIA DE FIN
 	//DE LA RESERVA YA EFECTUADA Y VICEVERSA.
 	public boolean verificarDisponibilidadFecha(Date ini,Date fin)
-<<<<<<< HEAD
+
     {  
    	 
    	 Fechas aux;
@@ -98,50 +98,9 @@ public class Habitacion {
     	 return flag;
    	 }
 	
-=======
-	{  
-		int i = 0;
-		Fechas aux;
-		Fechas proxima;
-		boolean flag =true;
 
-		while(i < fechaOcupacion.size() && flag)
-		{
-			aux = fechaOcupacion.get(i);
-			if(fin.before(aux.getFechaInDate()) || ini.after(aux.getFechaOutDate()))
-			{
-				if(ini.after(aux.getFechaOutDate()))
-				{
-					int f = i+1;
-					while(f < fechaOcupacion.size())
-					{
-						proxima = fechaOcupacion.get(f);
+	
 
-						if(fin.after(proxima.getFechaInDate()))
-						{
-							flag=false;
-
-						}
-						if(ini.after(proxima.getFechaOutDate()))
-						{
-							flag=true;
-							break;
-						}
-						f++;
-					}
-				} 
-			}    		
-			else     			
-			{	     			    			 
-				flag=false;
-			}
-
-			i++;
-		}
-		return flag;
-	}
-
->>>>>>> 7620333990c345905a086cf9091143bb1ae766dc
 	//Cambia el estado de false a true y viceversa
 	public void cambiarEstado()
 	{	

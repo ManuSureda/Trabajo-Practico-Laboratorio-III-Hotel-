@@ -307,5 +307,16 @@ public final class BaseDeDatos {
 		}
 	}
 	
+	public static void verTodasLasReservas()
+	{
+		Iterator it = baseDatosReserva.entrySet().iterator();
+		Reserva aux;
+		while(it.hasNext()) {
+			Map.Entry entry = (Map.Entry)it.next();
+			aux =(Reserva)entry.getValue();
+			aux.mostrarReserva();
+		}	
+	}
+	
 	
 }
