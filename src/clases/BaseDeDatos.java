@@ -93,6 +93,7 @@ public final class BaseDeDatos {
 		}
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * Guarda en un archivo el mapa de usuarios
 	 * @throws IOException
@@ -276,6 +277,37 @@ public final class BaseDeDatos {
 		}
 		
 	}
+=======
+	public static void archivarUsuarios() {
+        Archivo<String,Usuario> archi = new Archivo<String,Usuario>("usuarios.dat");
+        archi.escribirArchivo(baseDatosUsuario);
+    }
+
+    public static void leerUsuarios() {
+        Archivo<String,Usuario> archi = new Archivo<String,Usuario>("usuarios.dat");
+        baseDatosUsuario = archi.leerArchivo();
+    }
+
+    public static void archivarReserva() {
+        Archivo<Integer,Reserva> archi = new Archivo<Integer,Reserva>("reservas.dat");
+        archi.escribirArchivo(baseDatosReserva);
+    }
+
+    public static void leerReserva() {
+        Archivo<Integer,Reserva> archi = new Archivo<Integer,Reserva>("reservas.dat");
+        baseDatosReserva = archi.leerArchivo();
+    }
+
+    public static void archivarHabitaciones() {
+        Archivo<Integer,Habitacion> archi = new Archivo<Integer,Habitacion>("habitaciones.dat");
+        archi.escribirArchivo(baseDatosHabitacion);
+    }
+
+    public static void leerHabitaciones() {
+        Archivo<Integer,Habitacion> archi = new Archivo<Integer,Habitacion>("habitaciones.dat");
+        baseDatosHabitacion = archi.leerArchivo();
+    }
+>>>>>>> 672a52deaa06e7a422805b36b06a7b1000f0a20c
 
 	
 	
