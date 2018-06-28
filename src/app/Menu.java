@@ -2,10 +2,10 @@ package app;
 
 import java.util.Scanner;
 
+import clases.Administrador;
 import clases.BaseDeDatos;
-import excepciones.Conserje;
-import usuario.Administrador;
-import usuario.Cliente;
+import clases.Cliente;
+import clases.Conserje;
 
 public class Menu {
 	

@@ -1,8 +1,6 @@
-package usuario;
+package clases;
 
 import java.util.ArrayList;
-
-import clases.BaseDeDatos;
 
 public class Cliente extends Usuario {
 

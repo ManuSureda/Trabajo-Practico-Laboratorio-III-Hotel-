@@ -1,4 +1,4 @@
-package usuario;
+package clases;
 
 public class Persona {
 	

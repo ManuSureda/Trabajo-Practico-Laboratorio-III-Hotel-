@@ -1,10 +1,12 @@
 package app;
 
 import clases.BaseDeDatos;
+
+import clases.Cliente;
 import clases.Habitacion;
-import usuario.Cliente;
-import usuario.Usuario;
+
 import clases.Habitacion;
+import clases.Usuario;
 
 
 public class Main {

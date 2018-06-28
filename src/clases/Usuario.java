@@ -1,4 +1,4 @@
-package usuario;
+package clases;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -6,10 +6,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-import clases.BaseDeDatos;
-import clases.Fechas;
-import clases.Habitacion;
-import clases.Reserva;
 import excepciones.FechaInvalidaException;
 import excepciones.IdNotFoundException;
 
