@@ -34,13 +34,14 @@ public class Usuario extends Persona{
 		return password;
 	}
 	
-
+//	+ reservar
+	public void reservar(double costo, Fechas fechasDeOcupacion, ArrayList<Integer> habitaciones)
+	{
+		Reserva reserva = new Reserva(costo,habitaciones,fechasDeOcupacion);
+		BaseDeDatos.agregarReserva(reserva.getId(), reserva);
+	}
 	
-    /**
-     * Recibe la id de la reserva a eliminar, la busca en la base de datos de la reserva y busca las fechas que coinciden con la reserva , elimina las fechas 
-     * de las habitaciones a liberar y elimina la reserva
-     * @param ID de la Reserva
-     */
+//	+ cancelarReserva
 	public void cancelarReserva(int idReserva)
 	{   
 		if (BaseDeDatos.getReservas().containsKey(idReserva))
@@ -80,14 +81,7 @@ public class Usuario extends Persona{
 	{
 		BaseDeDatos.listarHabitacionesNoDisponibles(fechaElegida);
 	}
-	/**
-	 * Calcula los segundos desde una fecha especifica a las dos fechas que recibe por parametro, luego resta la cantidad de segundos para ver la distancia de un dia a otro
-	 * y los convierte en dias que luego multiplica por el costo para obtener el costo final
-	 * @param Objeto Habitacion
-	 * @param Fecha de inicion
-	 * @param Fecha de fin
-	 * @return Precio total
-	 */
+	
 	public double calcularCostoTotal(ArrayList<Integer> hab,Date ini,Date fin)
 	{   
 		double rta=0;
@@ -113,10 +107,6 @@ public class Usuario extends Persona{
 			return 0;
 		}
 	}
-	/**
-	 * Carga las fechas que contiene la variable
-	 * @param variable Fechas vacias
-	 */
 	public void ingresoFechasEstadia(Fechas f)
 	{
 		Scanner scan=new Scanner(System.in);
@@ -149,6 +139,10 @@ public class Usuario extends Persona{
 	
 	}
 	
+	
+	/**
+	 * Esta funcion se encarga de realizar la reserva de una habitacion.
+	 */
 	public void HacerReserva()
 	{
 		
@@ -156,15 +150,15 @@ public class Usuario extends Persona{
 		Scanner sc= new Scanner(System.in);
 		System.out.println("Ingrese la cantidad de pasajeros: ");
 		int cantPas=sc.nextInt();
-		Fechas f = new Fechas();
-		ingresoFechasEstadia(f);
-		System.out.println("Habitaciones disponibles: ");
-		HashMap<Integer,Habitacion> listaDeHabitaciones=new HashMap<>();
-		listaDeHabitaciones=BaseDeDatos.devolverHabitacionesDisponibles(f);
+		Fechas f = new Fechas();  
+		ingresoFechasEstadia(f); //Ingreso de fechas por dia mes y anio, ingreso y salida.
+		System.out.println("Habitaciones disponibles: ");  
+		HashMap<Integer,Habitacion> listaDeHabitaciones=new HashMap<>(); //HashMap donde se almacenan todas las habitaciones disponibles
+		listaDeHabitaciones=BaseDeDatos.devolverHabitacionesDisponibles(f);  //Lista las habitaciones disponibles en las fechas ingresadas.
 		
 		double costo=0;
 		char confirmacion='n';
-		ArrayList<Integer> listaDeHabitaciones2=new ArrayList<>();
+		ArrayList<Integer> listaDeHabitaciones2=new ArrayList<>(); //ArrayList donde se almacenan las habitaciones deseadas.
 		if (listaDeHabitaciones!=null)
 		{
 
@@ -173,9 +167,9 @@ public class Usuario extends Persona{
 			int cantAux=0;
 			Integer hab;
  			System.out.println("Elija las habitaciones que desea ocupar (una por una): ");
-			hab=sc.nextInt();
-			cantAux+=BaseDeDatos.getBaseHabitaciones().get(hab).getCapacidad();
-			listaDeHabitaciones2.add(hab);
+			hab=sc.nextInt();//scanea el numero de habitacion.
+			cantAux+=BaseDeDatos.getBaseHabitaciones().get(hab).getCapacidad();//suma la capacidad de la habitacion elegida.
+			listaDeHabitaciones2.add(hab);//agrega la habitacion elegida al array creado antes.
 			System.out.println("Desea contratar otra habitacion? (s/n): ");
 			control=sc.next().charAt(0);
 			boolean flag =false;
@@ -219,7 +213,7 @@ public class Usuario extends Persona{
 			}
 
 			else
-				System.out.println("El costo total seria de unos $: "+costo);
+				System.out.println("El costo total es de: $"+costo);
 
 
 		}
