@@ -11,6 +11,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import usuario.Cliente;
+import usuario.Usuario;
+
 public final class BaseDeDatos {
 	
 	private static HashMap<String,Usuario> baseDatosUsuario = new HashMap<String,Usuario>();
