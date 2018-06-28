@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import excepciones.LoginIncorrectoException;
 import interfaces.IArchivar;
 
 public final class BaseDeDatos {
@@ -26,8 +27,9 @@ public final class BaseDeDatos {
 	 * @param Contraseña
 	 * @param Nombre de Usuario
 	 * @return Retorna el Usuario en cuestion
+	 * @throws LoginIncorrectoException 
 	 */
-	public static Usuario buscarUsuario(String pass, String user) {
+	public static Usuario buscarUsuario(String pass, String user) throws LoginIncorrectoException {
 		boolean flag = false;
 		Iterator it = baseDatosUsuario.entrySet().iterator();
 		Usuario usuario = null;
@@ -38,6 +40,9 @@ public final class BaseDeDatos {
 				flag = true;
 			}
 		}	
+		if(usuario==null) {
+			throw new LoginIncorrectoException("El usuario o la pass son incorrectos.");
+		}
 		return usuario;
 	}
 	/**
@@ -93,7 +98,7 @@ public final class BaseDeDatos {
 		}
 	}
 	
-<<<<<<< HEAD
+
 	/**
 	 * Guarda en un archivo el mapa de usuarios
 	 * @throws IOException
@@ -277,7 +282,7 @@ public final class BaseDeDatos {
 		}
 		
 	}
-=======
+
 	public static void archivarUsuarios() {
         Archivo<String,Usuario> archi = new Archivo<String,Usuario>("usuarios.dat");
         archi.escribirArchivo(baseDatosUsuario);
@@ -307,7 +312,6 @@ public final class BaseDeDatos {
         Archivo<Integer,Habitacion> archi = new Archivo<Integer,Habitacion>("habitaciones.dat");
         baseDatosHabitacion = archi.leerArchivo();
     }
->>>>>>> 672a52deaa06e7a422805b36b06a7b1000f0a20c
 
 	
 	

@@ -3,6 +3,8 @@ package clases;
 import java.io.IOException;
 import java.util.Scanner;
 
+import excepciones.LoginIncorrectoException;
+
 public class Hotel {
 private Scanner scan;
 	
@@ -10,6 +12,7 @@ private Scanner scan;
 	{
 		
 		boolean flag=true;
+		boolean vof=false;
 		Usuario aux;
 		System.out.println("***** Bienvenido al Hotel Costa Esmeralda *****");
 		System.out.println("1. Ingresar al Sistema.");
@@ -26,25 +29,35 @@ private Scanner scan;
 					String user = scan.next();
 					System.out.println("Password: ");
 					String pass = scan.next();
-					
-					aux  = BaseDeDatos.buscarUsuario(pass, user);
-					
-					if(aux!=null) 
+					while(vof==false)
 					{
-						
-						if(BaseDeDatos.getBaseUsuarios().get(user) instanceof Cliente) {
-							Cliente a=(Cliente) aux;
-							MenuCliente(a);
+						try {
+							aux  = BaseDeDatos.buscarUsuario(pass, user);
+							if(aux!=null) 
+							{
+								
+								if(BaseDeDatos.getBaseUsuarios().get(user) instanceof Cliente) {
+									Cliente a=(Cliente) aux;
+									MenuCliente(a);
+								}
+								if(BaseDeDatos.getBaseUsuarios().get(user) instanceof Conserje) {
+									Conserje a=(Conserje) aux;
+									MenuConserje(a);
+								}
+								if(BaseDeDatos.getBaseUsuarios().get(user) instanceof Administrador) {
+									Administrador admin=(Administrador) aux;
+									MenuAdm(admin);
+								}
+							 }
+							vof=true;
+						} catch (LoginIncorrectoException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
-						if(BaseDeDatos.getBaseUsuarios().get(user) instanceof Conserje) {
-							Conserje a=(Conserje) aux;
-							MenuConserje(a);
-						}
-						if(BaseDeDatos.getBaseUsuarios().get(user) instanceof Administrador) {
-							Administrador admin=(Administrador) aux;
-							MenuAdm(admin);
-						}
-					 }
+					}
+					
+					
+					
 						break;
 					case 2:
 						registrarCliente();
