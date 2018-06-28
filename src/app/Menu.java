@@ -1,5 +1,6 @@
 package app;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import clases.Administrador;
@@ -76,7 +77,7 @@ public class Menu {
 		System.out.print("Ingrese su nombre de telefono: ");
 		nombre=scan.nextLine();
 		Cliente aux= new Cliente(nombre,dni,telefono,direccion,nombreUs,pass);
-		BaseDeDatos.agregarUsuario(nombreUs,aux);
+		BaseDeDatos.agregarUsuario(aux);
 	}
 	public void registrarConserje()
 	{	String nombreUs,nombre,direccion=null,telefono = null,dni=null,pass = null;
@@ -93,7 +94,7 @@ public class Menu {
 		System.out.print("Ingrese su nombre de telefono: ");
 		nombre=scan.nextLine();
 		Conserje aux= new Conserje(nombre,dni,telefono,direccion,nombreUs,pass);
-		BaseDeDatos.agregarUsuario(nombreUs,aux);
+		BaseDeDatos.agregarUsuario(aux);
 	}
 	
 	public void MenuCliente(Cliente a) {
@@ -156,6 +157,15 @@ public class Menu {
 		switch(respuesta) 
 		{
 			case 1:
+			try {
+				a.escribirArchivoReservas();
+				a.escribirArchivoUsuario();
+				a.escribirArchivoHabitaciones();
+				System.out.println("BackUp realizado con exito.");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 				
 			case 2:
 				registrarConserje();
